@@ -1,4 +1,4 @@
-# Tixae.ai Landing Page
+# XTRIUS Landing Page (Tixae.ai Brand)
 
 A professional, brand-compliant landing page built with Next.js 14, TypeScript, and Tailwind CSS. This implementation strictly follows the official Tixae brand guidelines including typography, color palette, spacing, logo usage, and tone of voice to ensure consistent brand representation.
 
@@ -25,8 +25,8 @@ A professional, brand-compliant landing page built with Next.js 14, TypeScript, 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/AIGENTZI/tixae-landing.git
-cd tixae-landing
+git clone https://github.com/AIGENTZI/xtrius-landing.git
+cd xtrius-landing
 ```
 
 2. Install dependencies:
