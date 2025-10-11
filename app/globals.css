@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Brand Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Avenir", "Inter", "Figree", -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, sans-serif;
+    font-weight: 400;
+    color: #050a23; /* Tixae Black */
+    letter-spacing: -0.025em; /* Brand tracking */
+  }
+
+  /* Brand Typography Hierarchy */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Avenir Medium", "Inter", "Figree Medium 500", -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #050a23; /* Tixae Black */
+    letter-spacing: -0.025em;
+  }
+
+  .text-brand-body {
+    font-family: "Avenir Book", "Inter", "Figree Light 300", -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .text-brand-title {
+    font-family: "Avenir Roman", "Inter", "Figree Regular 400", -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .text-brand-heading {
+    font-family: "Avenir Medium", "Inter", "Figree Medium 500", -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  .dropdown-item {
+    @apply block py-2 border-b border-gray-100 last:border-b-0 hover:text-tixae-dark-purple transition-colors;
+  }
+
+  /* Brand Button Styles */
+  .btn-primary {
+    @apply bg-tixae-bright-purple text-white py-4 px-8 rounded-lg font-heading font-medium hover:bg-white hover:text-tixae-bright-purple border-2 border-transparent hover:border-tixae-bright-purple transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-tixae-peach text-white py-3 px-6 rounded-lg font-heading font-medium hover:bg-white hover:text-tixae-peach border-2 border-transparent hover:border-tixae-peach transition-all duration-300;
+  }
+
+  /* Ensure proper contrast on dark backgrounds */
+  .bg-tixae-dark-purple,
+  .bg-tixae-deep-purple {
+    @apply text-white;
+  }
+
+  .bg-tixae-dark-purple h1,
+  .bg-tixae-dark-purple h2,
+  .bg-tixae-dark-purple h3,
+  .bg-tixae-dark-purple h4,
+  .bg-tixae-dark-purple h5,
+  .bg-tixae-dark-purple h6,
+  .bg-tixae-deep-purple h1,
+  .bg-tixae-deep-purple h2,
+  .bg-tixae-deep-purple h3,
+  .bg-tixae-deep-purple h4,
+  .bg-tixae-deep-purple h5,
+  .bg-tixae-deep-purple h6 {
+    @apply text-white !important;
+  }
+
+  /* Brand Card Styles */
+  .card-brand {
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100;
+  }
+
+  /* Professional spacing following brand guidelines */
+  .section-spacing {
+    @apply py-20;
+  }
+
+  .container-brand {
+    @apply max-w-1200 mx-auto px-5;
+  }
+}

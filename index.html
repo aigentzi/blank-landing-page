@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tixae.ai - AI Tools and Agents</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      .header {
+        background: white;
+        padding: 15px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .header__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      .header__bottom-left {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .header__logo img {
+        height: 40px;
+      }
+
+      .header__dropdowns {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+      }
+
+      .header__dropdown {
+        position: relative;
+      }
+
+      .header__dropdown a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .header__dropdown-tools-item {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 20px;
+        min-width: 200px;
+        display: none;
+      }
+
+      .header__dropdown:hover .header__dropdown-tools-item {
+        display: block;
+      }
+
+      .header__dropdown-tools-item a {
+        display: block;
+        padding: 8px 0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .header__top-left-dropdowns {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+      }
+
+      .header__dropdown-icon img {
+        width: 20px;
+        height: 20px;
+      }
+
+      /* Hero Section */
+      .simple-hero {
+        background-color: #e1d1e5;
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .simple-hero__container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .simple-hero__title {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .simple-hero__text {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .simple-hero__cta {
+        background: #8b4f9f;
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        display: inline-block;
+        transition: background 0.3s;
+      }
+
+      .simple-hero__cta:hover {
+        background: #7a4190;
+      }
+
+      /* Tabs Section */
+      .tabs {
+        padding: 80px 0;
+        background: white;
+      }
+
+      .tabs__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .tabs__content {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .tabs__title {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .tabs__text {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .tabs__button-list {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        list-style: none;
+        margin-bottom: 40px;
+      }
+
+      .tabs__button-link {
+        background: #f8f9fa;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+
+      .tabs__button-link.active {
+        background: #8b4f9f;
+        color: white;
+      }
+
+      .tabs__block-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        list-style: none;
+      }
+
+      .tabs__block-item {
+        background: #e2683e;
+        border-radius: 12px;
+        padding: 30px;
+        color: white;
+        transition: transform 0.3s;
+        cursor: pointer;
+      }
+
+      .tabs__block-item:nth-child(2) {
+        background: #f49500;
+      }
+
+      .tabs__block-item:nth-child(3) {
+        background: #5f9cf7;
+      }
+
+      .tabs__block-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .tabs__block-heading {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .tabs__block-icon img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .tabs__block-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .tabs__block-text {
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .tabs__block-cta {
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.3s;
+        display: inline-block;
+      }
+
+      .tabs__block-cta:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      /* Team Section */
+      .team {
+        padding: 80px 0;
+        background: #f8f9fa;
+      }
+
+      .team__title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: #333;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .team__container {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .team__image img {
+        max-width: 100%;
+        border-radius: 12px;
+      }
+
+      .team__text-block {
+        position: absolute;
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-width: 200px;
+        font-size: 0.9rem;
+      }
+
+      .team__text-block-1 {
+        top: 10%;
+        left: 5%;
+      }
+      .team__text-block-2 {
+        top: 20%;
+        right: 5%;
+      }
+      .team__text-block-3 {
+        bottom: 30%;
+        left: 10%;
+      }
+      .team__text-block-4 {
+        bottom: 20%;
+        right: 10%;
+      }
+      .team__text-block-5 {
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        padding: 80px 0;
+        background: white;
+      }
+
+      .testimonials__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .testimonials__title-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+        color: #333;
+      }
+
+      .testimonials__card-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .testimonials__card {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        cursor: pointer;
+      }
+
+      .testimonials__card:hover {
+        transform: translateY(-5px);
+      }
+
+      .testimonials__card-title {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .t-card-small-img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .testimonials__card-title-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .t-card-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .t-card-mid-text {
+        margin-bottom: 20px;
+        line-height: 1.6;
+        color: #666;
+      }
+
+      .t-card-author {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .t-card-about-author {
+        color: #888;
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+      }
+
+      .testimonials__button {
+        background: #8b4f9f;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+
+      .testimonials__button:hover {
+        background: #7a4190;
+      }
+
+      /* Purple Hero Section */
+      .simple-hero.white {
+        background-color: #42005f;
+        color: white;
+      }
+
+      .simple-hero.white .simple-hero__title {
+        color: white;
+      }
+
+      .simple-hero.white .simple-hero__text {
+        color: #ddd;
+      }
+
+      /* Split Section */
+      .split {
+        padding: 80px 0;
+        background: #f8f9fa;
+      }
+
+      .split__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .split__image img {
+        width: 100%;
+        border-radius: 12px;
+      }
+
+      .split__title {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .split__text {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .hero__button,
+      .split__button {
+        background: #8b4f9f;
+        color: white;
+        padding: 15px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+      }
+
+      /* Footer */
+      .footer {
+        background: #2d1b35;
+        color: white;
+        padding: 50px 0 20px;
+      }
+
+      .footer__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer__nav-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        list-style: none;
+        margin-bottom: 40px;
+      }
+
+      .footer__nav-title {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      .footer__sub-list {
+        list-style: none;
+      }
+
+      .footer__sub-item {
+        margin-bottom: 10px;
+      }
+
+      .footer__sub-item a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer__sub-item a:hover {
+        color: white;
+      }
+
+      .footer__icons {
+        display: flex;
+        gap: 15px;
+        list-style: none;
+        justify-content: center;
+        margin-bottom: 30px;
+      }
+
+      .footer__icon img {
+        width: 24px;
+        height: 24px;
+        filter: brightness(0.8);
+        transition: filter 0.3s;
+      }
+
+      .footer__icon:hover img {
+        filter: brightness(1);
+      }
+
+      .footer__text {
+        text-align: center;
+        color: #888;
+        border-top: 1px solid #444;
+        padding-top: 20px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .header__dropdowns {
+          display: none;
+        }
+
+        .simple-hero__title {
+          font-size: 2.5rem;
+        }
+
+        .tabs__title,
+        .team__title,
+        .testimonials__title-title {
+          font-size: 2rem;
+        }
+
+        .split__container {
+          grid-template-columns: 1fr;
+        }
+
+        .team__text-block {
+          position: static;
+          margin: 10px;
+          display: inline-block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__container">
+        <div class="header__bottom">
+          <div class="header__bottom-left">
+            <div class="header__logo">
+              <a href="#">
+                <img
+                  src="https://tixae.ai/hubfs/header-logo-1.svg"
+                  alt="TIXAE Logo"
+                />
+              </a>
+            </div>
+
+            <ul class="header__dropdowns header__bottom-left-dropdowns">
+              <li class="header__dropdown">
+                <a href="#">
+                  <p class="header__dropdown-text">About</p>
+                </a>
+              </li>
+              <li class="header__dropdown header__dropdown-tools modify">
+                <a href="#">
+                  <p class="header__dropdown-text">AI Agents</p>
+                  <div class="header__dropdown-arrow">
+                    <img
+                      src="https://tixae.ai/hubfs/raw_assets/public/tixae-2-theme/images/default/hedaer-arrow.svg"
+                      alt=""
+                    />
+                  </div>
+                </a>
+                <div class="header__dropdown-tools-item">
+                  <div class="header__dropdown-tools-item__wrapper">
+                    <a href="#">Call Minder</a>
+                    <a href="#">Customer Service</a>
+                    <a href="#">Bookings</a>
+                    <a href="#">Multi-Language</a>
+                    <a href="#">Outreach AI</a>
+                    <a href="#">Receptionist</a>
+                    <a href="#">Scheduler</a>
+                    <a href="#">Webstore</a>
+                    <a href="#">Website</a>
+                  </div>
+                </div>
+              </li>
+              <li class="header__dropdown header__dropdown-tools modify">
+                <a href="#">
+                  <p class="header__dropdown-text">AI Tools</p>
+                  <div class="header__dropdown-arrow">
+                    <img
+                      src="https://tixae.ai/hubfs/raw_assets/public/tixae-2-theme/images/default/hedaer-arrow.svg"
+                      alt=""
+                    />
+                  </div>
+                </a>
+                <div class="header__dropdown-tools-item">
+                  <div class="header__dropdown-tools-item__wrapper">
+                    <a href="#">Accounting</a>
+                    <a href="#">Agriculture</a>
+                    <a href="#">Automotive</a>
+                    <a href="#">Aqua Center</a>
+                    <a href="#">Airports</a>
+                    <a href="#">Auditing</a>
+                    <a href="#">Casino</a>
+                    <a href="#">Cinemas & Theaters</a>
+                    <a href="#">Construction</a>
+                    <a href="#">Dental Care</a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <ul class="header__dropdowns header__top-left-dropdowns">
+            <li class="header__dropdown">
+              <a href="#">
+                <div class="header__dropdown-icon">
+                  <img
+                    src="https://tixae.ai/hubfs/raw_assets/public/tixae-2-theme/images/default/header-dropdown-icon2.svg"
+                    alt=""
+                  />
+                </div>
+                <p class="header__dropdown-text">Contact Sales</p>
+              </a>
+            </li>
+            <li class="header__dropdown">
+              <a href="#">
+                <div class="header__dropdown-icon">
+                  <img
+                    src="https://tixae.ai/hubfs/raw_assets/public/tixae-2-theme/images/icons8-dev-48.png"
+                    alt=""
+                  />
+                </div>
+                <p class="header__dropdown-text">For Developers</p>
+              </a>
+            </li>
+            <li class="header__dropdown">
+              <a href="#">
+                <div class="header__dropdown-icon">
+                  <img
+                    src="https://tixae.ai/hubfs/raw_assets/public/tixae-2-theme/images/default/header-dropdown-icon3.svg"
+                    alt=""
+                  />
+                </div>
+                <p class="header__dropdown-text">Funding</p>
+              </a>
+            </li>
+            <li class="header__dropdown">
+              <a href="#">
+                <div class="header__dropdown-icon">
+                  <img
+                    src="https://tixae.ai/hubfs/raw_assets/public/tixae-2-theme/images/default/header-dropdown-icon.svg"
+                    alt=""
+                  />
+                </div>
+                <p class="header__dropdown-text">English</p>
+                <div class="header__dropdown-arrow">
+                  <img
+                    src="https://tixae.ai/hubfs/raw_assets/public/tixae-2-theme/images/default/hedaer-arrow.svg"
+                    alt=""
+                  />
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <section class="simple-hero purple">
+      <div class="simple-hero__container">
+        <h1 class="simple-hero__title">We are AI.</h1>
+        <p class="simple-hero__text">
+          Whatever you want to assistance with, Tixae.ai has a tool to make it
+          happen. Get to know our family of tools for everything from
+          simplifying processes to improving customer interactions and beyond.
+        </p>
+        <a class="simple-hero__cta" href="#">Learn more</a>
+      </div>
+    </section>
+
+    <section class="tabs">
+      <div class="tabs__container">
+        <div class="tabs__content">
+          <h2 class="tabs__title">25+ AI tools. Infinite possibilities.</h2>
+          <p class="tabs__text">
+            Reclaim your day with Tixae Ai:<br />
+            Automate admin, crush your to-do list, and get back to real work.
+          </p>
+          <ul class="tabs__button-list">
+            <li class="tabs__button-item">
+              <button class="tabs__button-link active">
+                <span class="tabs__button-text">Overview</span>
+              </button>
+            </li>
+            <li class="tabs__button-item">
+              <button class="tabs__button-link">
+                <span class="tabs__button-text">Office tools</span>
+              </button>
+            </li>
+            <li class="tabs__button-item">
+              <button class="tabs__button-link">
+                <span class="tabs__button-text">Admin tools</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="tabs__blocks-wrapper">
+          <ul class="tabs__block-list">
+            <li class="tabs__block-item" onclick="window.open('#', '_blank')">
+              <div class="tabs__block-heading">
+                <div class="tabs__block-icon">
+                  <img
+                    src="https://tixae.ai/hubfs/%D0%A1%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%2070-3.png"
+                    alt=""
+                  />
+                </div>
+                <h3 class="tabs__block-title">Schedulr.ai</h3>
+              </div>
+              <p class="tabs__block-text">
+                The scheduling assistant tool which helps you optimise your time
+                by automating appointments, meeting and much more.
+              </p>
+              <button
+                class="tabs__block-cta"
+                onclick="event.stopPropagation(); window.open('#', '_blank')"
+              >
+                Learn more
+              </button>
+            </li>
+            <li class="tabs__block-item" onclick="window.open('#', '_blank')">
+              <div class="tabs__block-heading">
+                <div class="tabs__block-icon">
+                  <img
+                    src="https://tixae.ai/hubfs/%D0%A1%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%2075-2.png"
+                    alt=""
+                  />
+                </div>
+                <h3 class="tabs__block-title">VoicePro.ai</h3>
+              </div>
+              <p class="tabs__block-text">
+                The ultimate voice assistant tool that streamlines information
+                retrieval and hands-free task management.
+              </p>
+              <button
+                class="tabs__block-cta"
+                onclick="event.stopPropagation(); window.open('#', '_blank')"
+              >
+                Learn more
+              </button>
+            </li>
+            <li class="tabs__block-item" onclick="window.open('#', '_blank')">
+              <div class="tabs__block-heading">
+                <div class="tabs__block-icon">
+                  <img
+                    src="https://tixae.ai/hubfs/%D0%A1%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%2037-1.png"
+                    alt=""
+                  />
+                </div>
+                <h3 class="tabs__block-title">VirtualReception.ai</h3>
+              </div>
+              <p class="tabs__block-text">
+                The call answering service which improves client interactions
+                and relations with seamless communication.
+              </p>
+              <button
+                class="tabs__block-cta"
+                onclick="event.stopPropagation(); window.open('#', '_blank')"
+              >
+                Learn more
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="team num2">
+      <h2 class="team__title">
+        "Less admin. More impact. Tixae Ai gives you back your time."
+      </h2>
+      <div class="team__container">
+        <div class="team__image">
+          <img src="https://tixae.ai/hubfs/team-image.png" alt="team-image" />
+        </div>
+        <div class="team__text-block team__text-block-1">
+          <p class="team__text">
+            The Lingu.ai tool ensure... Lorem ipsum dolor sit amet, consectetuer
+            adipiscing elit, sed diam dolore. Mark - Immigration Services
+          </p>
+        </div>
+        <div class="team__text-block team__text-block-2">
+          <p class="team__text">
+            The OutReach.ai tool ensure... Lorem ipsum dolor sit amet,
+            consectetuer adipiscingdolore aliquam erat. Emma - Customer Services
+          </p>
+        </div>
+        <div class="team__text-block team__text-block-3">
+          <p class="team__text">
+            The EasyBook.ai tool ensure... Lorem ipsum dolor sit amet,
+            consectetuer adipiscing elit, sed diam dolore magnam erat. Steven -
+            Workshop owner
+          </p>
+        </div>
+        <div class="team__text-block team__text-block-4">
+          <p class="team__text">
+            The VirtualReception.ai tool ensure... Lorem ipsum dolor sit amet,
+            consectetuer adipiscingdolore magna aliquam erat. Tracy - Retail
+          </p>
+        </div>
+        <div class="team__text-block team__text-block-5">
+          <p class="team__text">
+            The CallMinder.ai tool ensure... Lorem ipsum dolor sit amet,
+            consectetuer adipiscing elit, sed diam dolore magna aliquam erat.
+            Craig - Plumber
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials num2">
+      <div class="testimonials__container">
+        <div class="testimonials__title">
+          <h1 class="testimonials__title-title">
+            Specific business tools developed exclusively for industry
+          </h1>
+        </div>
+        <div class="testimonials__card-list">
+          <div class="testimonials__card" onclick="window.open('#', '_blank')">
+            <div class="testimonials__card-title">
+              <img
+                class="t-card-small-img"
+                src="https://tixae.ai/hubfs/92-1.png"
+                alt=""
+              />
+              <h1 class="testimonials__card-title-title">DentalPro</h1>
+            </div>
+            <img
+              class="t-card-img"
+              src="https://tixae.ai/hubfs/dental.webp"
+              alt="dental"
+            />
+            <p class="t-card-mid-text">
+              Since implementing DentalPro our dental practice has seen a
+              significant improvement in efficiency, thanks to its automated
+              appointment scheduling. The tool seamlessly integrates with our
+              existing practice management system, allowing patients to easily
+              book appointments while automatically filling quieter periods and
+              optimizing our staff's workload.
+            </p>
+            <p class="t-card-author">Dr. Sarah M.</p>
+            <p class="t-card-about-author">Dental Practice Owner</p>
+            <button
+              class="testimonials__button"
+              onclick="event.stopPropagation(); window.open('#', '_blank')"
+            >
+              Learn more
+            </button>
+          </div>
+
+          <div class="testimonials__card" onclick="window.open('#', '_blank')">
+            <div class="testimonials__card-title">
+              <img
+                class="t-card-small-img"
+                src="https://tixae.ai/hubfs/110-1.png"
+                alt=""
+              />
+              <h1 class="testimonials__card-title-title">LawyerPro</h1>
+            </div>
+            <img
+              class="t-card-img"
+              src="https://tixae.ai/hubfs/lawyer.webp"
+              alt="lawyer"
+            />
+            <p class="t-card-mid-text">
+              Implementing LawyerPro has been transformative for our law firm,
+              as its enhanced legal knowledge and compliance capabilities
+              provide us with up-to-date insights on laws, regulations, and
+              legal precedents. This has significantly reduced human error in
+              delivering legal information.
+            </p>
+            <p class="t-card-author">Attorney T.R.</p>
+            <p class="t-card-about-author">
+              Criminal Defense Attorney
+            </p>
+            <button
+              class="testimonials__button"
+              onclick="event.stopPropagation(); window.open('#', '_blank')"
+            >
+              Learn more
+            </button>
+          </div>
+
+          <div class="testimonials__card" onclick="window.open('#', '_blank')">
+            <div class="testimonials__card-title">
+              <img
+                class="t-card-small-img"
+                src="https://tixae.ai/hubfs/95-1.png"
+                alt=""
+              />
+              <h1 class="testimonials__card-title-title">E-ComControl</h1>
+            </div>
+            <img
+              class="t-card-img"
+              src="https://tixae.ai/hubfs/ecomcontrol.webp"
+              alt="ecomcontrol"
+            />
+            <p class="t-card-mid-text">
+              Implementing E-ComControl has greatly enhanced our warehouse
+              operations by streamlining efficiency and ensuring stock
+              availability for high-demand products, which has boosted our sales
+              potential. The AI tool identifies opportunities for premium
+              pricing and discounts to maximize profits.
+            </p>
+            <p class="t-card-author">Manager M.D.</p>
+            <p class="t-card-about-author">
+              Warehouse Operations Manager
+            </p>
+            <button
+              class="testimonials__button"
+              onclick="event.stopPropagation(); window.open('#', '_blank')"
+            >
+              Learn more
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="simple-hero white">
+      <div class="simple-hero__container">
+        <h1 class="simple-hero__title">Tixae.Ai is learning</h1>
+        <p class="simple-hero__text">
+          Constantly see how AI is benefiting your business using automated data
+          analysis
+        </p>
+        <a class="simple-hero__cta" href="#">Learn more</a>
+      </div>
+    </section>
+
+    <section class="split fit_content image_content">
+      <div class="split__container">
+        <div class="split__image">
+          <img src="https://tixae.ai/hubfs/SPLIT-IMAGE.png" alt="SPLIT-IMAGE" />
+        </div>
+        <div class="split__content">
+          <h2 class="split__title">
+            Embrace the future.<br />Don't get left behind.
+          </h2>
+          <p class="split__text">
+            Tixae.Ai combines modular AI technology with expert support for
+            every unique situation.
+          </p>
+          <p class="hero__button vg-start-vapi">Start free trial</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__container">
+        <ul class="footer__nav-list">
+          <li class="footer__nav-item">
+            <h2 class="footer__nav-title">Site</h2>
+            <ul class="footer__sub-list">
+              <li class="footer__sub-item"><a href="#">Main pages</a></li>
+              <li class="footer__sub-item"><a href="#">Home</a></li>
+              <li class="footer__sub-item"><a href="#">About</a></li>
+              <li class="footer__sub-item"><a href="#">Contact</a></li>
+              <li class="footer__sub-item"><a href="#">Sitemap</a></li>
+            </ul>
+          </li>
+          <li class="footer__nav-item">
+            <h2 class="footer__nav-title">Company</h2>
+            <ul class="footer__sub-list">
+              <li class="footer__sub-item"><a href="#">About us</a></li>
+              <li class="footer__sub-item"><a href="#">Careers</a></li>
+              <li class="footer__sub-item"><a href="#">Management Team</a></li>
+              <li class="footer__sub-item">
+                <a href="#">Board of Directors</a>
+              </li>
+              <li class="footer__sub-item">
+                <a href="#">Investor Relations</a>
+              </li>
+              <li class="footer__sub-item"><a href="#">Contact us</a></li>
+            </ul>
+          </li>
+          <li class="footer__nav-item">
+            <h2 class="footer__nav-title">Most popular tools</h2>
+            <ul class="footer__sub-list">
+              <li class="footer__sub-item"><a href="#">Schedulr</a></li>
+              <li class="footer__sub-item"><a href="#">VoicePro</a></li>
+              <li class="footer__sub-item"><a href="#">VirtualReception</a></li>
+              <li class="footer__sub-item"><a href="#">EasyBook</a></li>
+              <li class="footer__sub-item"><a href="#">GlobalLingo</a></li>
+              <li class="footer__sub-item"><a href="#">AI KnowledgeHub</a></li>
+              <li class="footer__sub-item"><a href="#">OutReach</a></li>
+              <li class="footer__sub-item"><a href="#">Lingu</a></li>
+              <li class="footer__sub-item"><a href="#">CallMinder</a></li>
+            </ul>
+          </li>
+          <li class="footer__nav-item">
+            <h2 class="footer__nav-title">
+              Most popular<br />professional tools
+            </h2>
+            <ul class="footer__sub-list">
+              <li class="footer__sub-item"><a href="#">RetailChains</a></li>
+              <li class="footer__sub-item"><a href="#">AccountingPro</a></li>
+              <li class="footer__sub-item"><a href="#">DentistPro</a></li>
+              <li class="footer__sub-item"><a href="#">E-ComControl</a></li>
+              <li class="footer__sub-item">
+                <a href="#">FranchisorControl</a>
+              </li>
+              <li class="footer__sub-item">
+                <a href="#">ImmigrationServices</a>
+              </li>
+              <li class="footer__sub-item"><a href="#">GovernPro</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="footer__icons">
+          <li class="footer__icon">
+            <a href="#"
+              ><img src="https://tixae.ai/hubfs/facebook.svg" alt="facebook"
+            /></a>
+          </li>
+          <li class="footer__icon">
+            <a href="#"><img src="https://tixae.ai/hubfs/x.svg" alt="x" /></a>
+          </li>
+          <li class="footer__icon">
+            <a href="#"
+              ><img src="https://tixae.ai/hubfs/insta.svg" alt="insta"
+            /></a>
+          </li>
+          <li class="footer__icon">
+            <a href="#"
+              ><img src="https://tixae.ai/hubfs/ball.svg" alt="ball"
+            /></a>
+          </li>
+          <li class="footer__icon">
+            <a href="#"
+              ><img src="https://tixae.ai/hubfs/pinterest.svg" alt="pinterest"
+            /></a>
+          </li>
+          <li class="footer__icon">
+            <a href="#"
+              ><img src="https://tixae.ai/hubfs/linkedin.svg" alt="linkedin"
+            /></a>
+          </li>
+          <li class="footer__icon">
+            <a href="#"
+              ><img src="https://tixae.ai/hubfs/twitch.svg" alt="twitch"
+            /></a>
+          </li>
+          <li class="footer__icon">
+            <a href="#"
+              ><img src="https://tixae.ai/hubfs/tiktok.svg" alt="tiktok"
+            /></a>
+          </li>
+          <li class="footer__icon">
+            <a href="#"
+              ><img src="https://tixae.ai/hubfs/viber.svg" alt="viber"
+            /></a>
+          </li>
+          <li class="footer__icon">
+            <a href="#"
+              ><img src="https://tixae.ai/hubfs/yt-1.svg" alt="yt-1"
+            /></a>
+          </li>
+          <li class="footer__icon">
+            <a href="#"
+              ><img src="https://tixae.ai/hubfs/snap-1.svg" alt="snap-1"
+            /></a>
+          </li>
+          <li class="footer__icon">
+            <a href="#"
+              ><img src="https://tixae.ai/hubfs/reddit.svg" alt="reddit"
+            /></a>
+          </li>
+        </ul>
+      </div>
+      <p class="footer__text">
+        © 2025 Tixae.ai | Transforming Business Through Intelligent AI
+      </p>
+    </footer>
+
+    <script>
+      // Simple tab functionality
+      document.querySelectorAll(".tabs__button-link").forEach((button) => {
+        button.addEventListener("click", () => {
+          document
+            .querySelectorAll(".tabs__button-link")
+            .forEach((b) => b.classList.remove("active"));
+          button.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>
