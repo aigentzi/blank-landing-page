@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://studio.xtrius.com",
+      "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://studio.xtrius.com/:path*",
+      "permanent": false
+    }
+  ]
+}
